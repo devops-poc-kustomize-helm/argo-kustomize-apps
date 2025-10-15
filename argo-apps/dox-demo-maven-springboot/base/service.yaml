@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dox-demo-maven-springboot
+spec:
+  type: ClusterIP
+  selector:
+    app: dox-demo-maven-springboot
+  ports:
+    - port: 80
+      targetPort: 80

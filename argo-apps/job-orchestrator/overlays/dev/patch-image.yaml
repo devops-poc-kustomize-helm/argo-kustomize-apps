@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-orchestrator
+spec:
+  template:
+    spec:
+      serviceAccountName: orchestrator-sa
+      containers:
+        - name: job-orchestrator
+          image: devstackhub/job-orchestrator:20250819.200021.0

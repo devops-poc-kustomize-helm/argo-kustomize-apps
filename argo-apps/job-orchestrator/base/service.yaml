@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: job-orchestrator
+spec:
+  type: ClusterIP
+  selector:
+    app: job-orchestrator
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-orchestrator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: job-orchestrator
+  template:
+    metadata:
+      labels:
+        app: job-orchestrator
+    spec:
+      serviceAccountName: orchestrator-sa
+      containers:
+        - name: job-orchestrator
+          image: nginx:latest
+          ports:
+            - containerPort: 80

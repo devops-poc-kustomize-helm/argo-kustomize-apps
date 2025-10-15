@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-hello-world
+spec:
+  type: ClusterIP
+  selector:
+    app: springboot-hello-world
+  ports:
+    - port: 80
+      targetPort: 80

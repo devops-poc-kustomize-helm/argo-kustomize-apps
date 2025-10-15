@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dox-demo-maven-springboot
+spec:
+  template:
+    spec:
+      
+      containers:
+        - name: dox-demo-maven-springboot
+          image: devstackhub/dox-demo-maven-springboot:20250731.152503.0

@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-hello-world
+spec:
+  template:
+    spec:
+      
+      containers:
+        - name: springboot-hello-world
+          image: devstackhub/springboot-hello-world:20250424.093922.0
