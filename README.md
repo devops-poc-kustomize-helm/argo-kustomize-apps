@@ -1,8 +1,3 @@
-Here’s an updated **README.md** for your **Kustomize-based solution**, including the directory tree, ArgoCD deployment manifests for dev/test, and a short comparison note about complexity vs Helm:
-
----
-
-```markdown
 # 🚀 ArgoCD Kustomize Applications
 
 This repository contains ArgoCD applications structured with **base** and **overlays** for multiple environments.
@@ -274,4 +269,4 @@ kubectl apply -f readme.md  # or copy YAML snippets
 * Maintaining dev/test differences in Kustomize means **patches, kustomization.yaml files, and overlays** per environment, whereas Helm can handle this with **one chart + multiple values.yaml**.
 * Overall, **Helm is generally easier and more concise** for multi-app, multi-environment ArgoCD setups.
 
-```
+
