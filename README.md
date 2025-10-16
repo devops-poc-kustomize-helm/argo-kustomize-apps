@@ -1,89 +1,66 @@
+Here’s an updated **README.md** for your **Kustomize-based solution**, including the directory tree, ArgoCD deployment manifests for dev/test, and a short comparison note about complexity vs Helm:
 
+---
+
+```markdown
 # 🚀 ArgoCD Kustomize Applications
 
 This repository contains ArgoCD applications structured with **base** and **overlays** for multiple environments.
+
+---
 
 ## 📁 Directory Structure
 
 ```
 
-argo-apps/
-├── springboot-hello-world/
-│   ├── base/
-│   └── overlays/
-│       ├── dev/
-│       └── test/
-├── dox-demo-maven-springboot/
-│   ├── base/
-│   └── overlays/
-│       ├── dev/
-│       └── test/
-└── job-orchestrator/
-├── base/
-└── overlays/
-├── dev/
-└── test/
-
-````
-
-
-<details>
-
-````
-
 └── argo-apps
-    ├── dox-demo-maven-springboot
-    │   ├── base
-    │   │   ├── deployment.yaml
-    │   │   ├── kustomization.yaml
-    │   │   └── service.yaml
-    │   └── overlays
-    │       ├── dev
-    │       │   ├── kustomization.yaml
-    │       │   └── patch-image.yaml
-    │       └── test
-    │           ├── kustomization.yaml
-    │           └── patch-image.yaml
-    ├── job-orchestrator
-    │   ├── base
-    │   │   ├── deployment.yaml
-    │   │   ├── kustomization.yaml
-    │   │   └── service.yaml
-    │   └── overlays
-    │       ├── dev
-    │       │   ├── kustomization.yaml
-    │       │   └── patch-image.yaml
-    │       └── test
-    │           ├── kustomization.yaml
-    │           └── patch-image.yaml
-    └── springboot-hello-world
-        ├── base
-        │   ├── deployment.yaml
-        │   ├── kustomization.yaml
-        │   └── service.yaml
-        └── overlays
-            ├── dev
-            │   ├── kustomization.yaml
-            │   └── patch-image.yaml
-            └── test
-                ├── kustomization.yaml
-                └── patch-image.yaml
-                
-````                
-</details>
-Each application has:
-- **base**: shared Kustomize configuration (deployments, services, ingress, etc.)
-- **overlays**: environment-specific configuration for `dev` and `test`
+├── dox-demo-maven-springboot
+│   ├── base
+│   │   ├── deployment.yaml
+│   │   ├── kustomization.yaml
+│   │   └── service.yaml
+│   └── overlays
+│       ├── dev
+│       │   ├── kustomization.yaml
+│       │   └── patch-image.yaml
+│       └── test
+│           ├── kustomization.yaml
+│           └── patch-image.yaml
+├── job-orchestrator
+│   ├── base
+│   │   ├── deployment.yaml
+│   │   ├── kustomization.yaml
+│   │   └── service.yaml
+│   └── overlays
+│       ├── dev
+│       │   ├── kustomization.yaml
+│       │   └── patch-image.yaml
+│       └── test
+│           ├── kustomization.yaml
+│           └── patch-image.yaml
+└── springboot-hello-world
+├── base
+│   ├── deployment.yaml
+│   ├── kustomization.yaml
+│   └── service.yaml
+└── overlays
+├── dev
+│   ├── kustomization.yaml
+│   └── patch-image.yaml
+└── test
+├── kustomization.yaml
+└── patch-image.yaml
+
+````
+
+- **base**: shared Kustomize configuration (deployments, services, ingress, etc.)  
+- **overlays**: environment-specific configuration for `dev` and `test`  
 
 ---
 
 ## 🧩 ArgoCD Application Definitions
 
-Below are ArgoCD application manifests for each app in both `dev` and `test` environments.
-
----
-
-### 🌱 1. Springboot Hello World
+### Springboot Hello World
 
 #### Dev
 ```yaml
@@ -95,7 +72,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/springboot-hello-world/overlays/dev
   destination:
@@ -120,7 +97,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/springboot-hello-world/overlays/test
   destination:
@@ -136,7 +113,7 @@ spec:
 
 ---
 
-### ⚙️ 2. Dox Demo Maven Spring Boot
+### Dox Demo Maven Spring Boot
 
 #### Dev
 
@@ -149,7 +126,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/dox-demo-maven-springboot/overlays/dev
   destination:
@@ -174,7 +151,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/dox-demo-maven-springboot/overlays/test
   destination:
@@ -190,7 +167,7 @@ spec:
 
 ---
 
-### 🧠 3. Job Orchestrator
+### Job Orchestrator
 
 #### Dev
 
@@ -203,7 +180,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/job-orchestrator/overlays/dev
   destination:
@@ -228,7 +205,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps/job-orchestrator/overlays/test
   destination:
@@ -244,9 +221,9 @@ spec:
 
 ---
 
-## 📦 Optional: App-of-Apps Pattern
+## 📦 Optional: App-of-Apps
 
-You can manage all these applications from a single **parent ArgoCD Application**:
+You can manage all applications from a single parent ArgoCD Application:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -257,7 +234,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
+    repoURL: https://github.com/your-org/argo-kustomize-apps.git
     targetRevision: HEAD
     path: argo-apps
   destination:
@@ -273,21 +250,28 @@ spec:
 
 ## 🧾 Usage
 
-1. Clone this repository:
+1. Clone repository:
 
-   ```bash
-   git clone https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps.git
-   cd argo-apps
-   ```
-2. Apply your chosen environment manifests:
+```bash
+git clone https://github.com/your-org/argo-kustomize-apps.git
+cd argo-apps
+```
 
-   ```bash
-   kubectl apply -f readme.md  # or copy YAML snippets
-   ```
+2. Apply environment manifests:
+
+```bash
+kubectl apply -f readme.md  # or copy YAML snippets
+```
+
 3. Check applications in ArgoCD UI.
 
 ---
 
-📘 **Maintainer**: DevOps Team
-📅 **Last Updated**: October 2025
-🌐 **Repo**: [https://github.com/devops-poc-kustomize-helm/argo-apps](https://github.com/devops-poc-kustomize-helm/argo-kustomize-apps)
+## ⚖️ Complexity Comparison vs Helm
+
+* Kustomize requires **more files per app and per environment** (base + overlays), creating **deep folder structures**.
+* Helm allows **parameterization through values files** and **single templates**, making multi-environment deployments simpler.
+* Maintaining dev/test differences in Kustomize means **patches, kustomization.yaml files, and overlays** per environment, whereas Helm can handle this with **one chart + multiple values.yaml**.
+* Overall, **Helm is generally easier and more concise** for multi-app, multi-environment ArgoCD setups.
+
+```
