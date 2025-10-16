@@ -216,33 +216,6 @@ spec:
 
 ---
 
-## 📦 Optional: App-of-Apps
-
-You can manage all applications from a single parent ArgoCD Application:
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argo-apps-root
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/your-org/argo-kustomize-apps.git
-    targetRevision: HEAD
-    path: argo-apps
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
----
-
 ## 🧾 Usage
 
 1. Clone repository:
